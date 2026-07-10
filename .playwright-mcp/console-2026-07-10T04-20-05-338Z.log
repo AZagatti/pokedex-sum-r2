@@ -1,0 +1,10 @@
+[    8509ms] [ERROR] updated at
+    at http://localhost:5173/src/routes/favorites/+page.svelte:28:6
+    at loadFavorites (http://localhost:5173/src/routes/favorites/+page.svelte:27:32)
+    at $effect (http://localhost:5173/src/routes/favorites/+page.svelte:55:4)
+    at initialize (http://localhost:5173/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=694fb0a0:704:9)
+    at _hydrate (http://localhost:5173/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=694fb0a0:3102:8)
+    at async Module.start (http://localhost:5173/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=694fb0a0:403:3) @ http://localhost:5173/@vite/client:524
+[    8958ms] effect_update_depth_exceeded
+Maximum update depth exceeded. This typically indicates that an effect reads and writes the same piece of state
+https://svelte.dev/e/effect_update_depth_exceeded

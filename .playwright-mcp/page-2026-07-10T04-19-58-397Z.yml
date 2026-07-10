@@ -1,0 +1,22 @@
+- generic [ref=f1e3]:
+  - banner [ref=f1e4]:
+    - navigation [ref=f1e5]:
+      - link "Pokédex" [ref=f1e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f1e7]:
+        - link "List" [ref=f1e8] [cursor=pointer]:
+          - /url: /
+        - link "Berries" [ref=f1e9] [cursor=pointer]:
+          - /url: /berries
+        - link "Favorites" [ref=f1e10] [cursor=pointer]:
+          - /url: /favorites
+        - button "Toggle theme" [ref=f1e11]
+  - main [ref=f1e14]:
+    - generic [ref=f1e15]:
+      - heading "Berries" [level=1] [ref=f1e16]
+      - paragraph [ref=f1e18]: Loading berries...
+  - contentinfo [ref=f1e19]:
+    - paragraph [ref=f1e20]:
+      - text: Pokédex powered by
+      - link "PokéAPI" [ref=f1e21] [cursor=pointer]:
+        - /url: https://pokeapi.co

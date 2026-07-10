@@ -1,0 +1,31 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - navigation [ref=e5]:
+      - link "Pokédex" [ref=e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e7]:
+        - link "List" [ref=e8] [cursor=pointer]:
+          - /url: /
+        - link "Berries" [ref=e9] [cursor=pointer]:
+          - /url: /berries
+        - link "Favorites" [ref=e10] [cursor=pointer]:
+          - /url: /favorites
+        - button "Toggle theme" [ref=e11]
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - heading "Pokédex" [level=1] [ref=e16]
+      - generic [ref=e17]:
+        - textbox "Search by name..." [ref=e22]
+        - paragraph [ref=e24]: Types
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - radio "Sort by Number" [checked] [ref=e27]
+            - generic [ref=e28]: Sort by Number
+          - generic [ref=e29]:
+            - radio "Sort by Base Stats" [ref=e30]
+            - generic [ref=e31]: Sort by Base Stats
+  - contentinfo [ref=e33]:
+    - paragraph [ref=e34]:
+      - text: Pokédex powered by
+      - link "PokéAPI" [ref=e35] [cursor=pointer]:
+        - /url: https://pokeapi.co

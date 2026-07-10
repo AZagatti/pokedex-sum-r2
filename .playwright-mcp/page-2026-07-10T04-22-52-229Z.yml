@@ -1,0 +1,94 @@
+- generic [ref=f6e3]:
+  - banner [ref=f6e4]:
+    - navigation [ref=f6e5]:
+      - link "Pokédex" [ref=f6e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f6e7]:
+        - link "List" [ref=f6e8] [cursor=pointer]:
+          - /url: /
+        - link "Berries" [ref=f6e9] [cursor=pointer]:
+          - /url: /berries
+        - link "Favorites" [ref=f6e10] [cursor=pointer]:
+          - /url: /favorites
+        - button "Toggle theme" [active] [ref=f6e11]
+  - main [ref=f6e14]:
+    - generic [ref=f6e15]:
+      - link "Back to Pokédex" [ref=f6e16] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f6e24]:
+        - generic [ref=f6e25]:
+          - generic [ref=f6e26]:
+            - img "Bulbasaur" [ref=f6e27]
+            - button [ref=f6e28]
+          - generic [ref=f6e30]:
+            - button "Front" [ref=f6e31]
+            - button "Back" [ref=f6e32]
+            - button "Shiny" [ref=f6e33]
+            - button "Play cry" [ref=f6e34]
+          - generic [ref=f6e36]:
+            - heading "Base Stats" [level=3] [ref=f6e37]
+            - generic [ref=f6e39]:
+              - generic [ref=f6e40]: Hp
+              - generic [ref=f6e41]: "45"
+            - generic [ref=f6e45]:
+              - generic [ref=f6e46]: Attack
+              - generic [ref=f6e47]: "49"
+            - generic [ref=f6e51]:
+              - generic [ref=f6e52]: Defense
+              - generic [ref=f6e53]: "49"
+            - generic [ref=f6e57]:
+              - generic [ref=f6e58]: Special-attack
+              - generic [ref=f6e59]: "65"
+            - generic [ref=f6e63]:
+              - generic [ref=f6e64]: Special-defense
+              - generic [ref=f6e65]: "65"
+            - generic [ref=f6e69]:
+              - generic [ref=f6e70]: Speed
+              - generic [ref=f6e71]: "45"
+        - generic [ref=f6e74]:
+          - generic [ref=f6e75]:
+            - paragraph [ref=f6e76]: "#0001"
+            - heading "Bulbasaur" [level=1] [ref=f6e77]
+          - generic [ref=f6e78]:
+            - heading "Types" [level=3] [ref=f6e79]
+            - generic [ref=f6e80]:
+              - generic [ref=f6e81]: Grass
+              - generic [ref=f6e82]: Poison
+          - generic [ref=f6e83]:
+            - generic [ref=f6e84]:
+              - paragraph [ref=f6e85]: Height
+              - paragraph [ref=f6e86]: 0.7 m
+            - generic [ref=f6e87]:
+              - paragraph [ref=f6e88]: Weight
+              - paragraph [ref=f6e89]: 6.9 kg
+          - generic [ref=f6e90]:
+            - heading "Abilities" [level=3] [ref=f6e91]
+            - generic [ref=f6e92]:
+              - generic [ref=f6e93]: overgrow
+              - generic [ref=f6e95]:
+                - generic [ref=f6e96]: chlorophyll
+                - generic [ref=f6e97]: Hidden
+          - generic [ref=f6e98]:
+            - heading "Moves" [level=3] [ref=f6e99]
+            - generic [ref=f6e100]:
+              - generic [ref=f6e101]: razor wind
+              - generic [ref=f6e102]: swords dance
+              - generic [ref=f6e103]: cut
+              - generic [ref=f6e104]: bind
+              - generic [ref=f6e105]: vine whip
+              - generic [ref=f6e106]: headbutt
+            - paragraph [ref=f6e107]: +80 more
+          - generic [ref=f6e108]:
+            - heading "Evolution Chain" [level=3] [ref=f6e109]
+            - generic [ref=f6e110]:
+              - link "bulbasaur" [ref=f6e111] [cursor=pointer]:
+                - /url: /pokemon/bulbasaur
+              - link "ivysaur" [ref=f6e112] [cursor=pointer]:
+                - /url: /pokemon/ivysaur
+              - link "venusaur" [ref=f6e113] [cursor=pointer]:
+                - /url: /pokemon/venusaur
+  - contentinfo [ref=f6e21]:
+    - paragraph [ref=f6e22]:
+      - text: Pokédex powered by
+      - link "PokéAPI" [ref=f6e23] [cursor=pointer]:
+        - /url: https://pokeapi.co

@@ -1,0 +1,17 @@
+[    9980ms] [ERROR] updated at
+    at http://localhost:5173/src/routes/favorites/+page.svelte?t=1783657230099:27:6
+    at loadFavorites (http://localhost:5173/src/routes/favorites/+page.svelte?t=1783657230099:26:32)
+    at http://localhost:5173/src/routes/favorites/+page.svelte?t=1783657230099:45:4
+    at $effect (http://localhost:5173/src/routes/favorites/+page.svelte?t=1783657230099:43:32)
+    at initialize (http://localhost:5173/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=694fb0a0:704:9)
+    at _hydrate (http://localhost:5173/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=694fb0a0:3102:8)
+    at async Module.start (http://localhost:5173/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=694fb0a0:403:3) @ http://localhost:5173/@vite/client:524
+[   10105ms] [ERROR] updated at
+    at http://localhost:5173/src/routes/favorites/+page.svelte?t=1783657230099:44:6
+    at $effect (http://localhost:5173/src/routes/favorites/+page.svelte?t=1783657230099:43:32)
+    at initialize (http://localhost:5173/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=694fb0a0:704:9)
+    at _hydrate (http://localhost:5173/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=694fb0a0:3102:8)
+    at async Module.start (http://localhost:5173/node_modules/@sveltejs/kit/src/runtime/client/client.js?v=694fb0a0:403:3) @ http://localhost:5173/@vite/client:524
+[   10419ms] effect_update_depth_exceeded
+Maximum update depth exceeded. This typically indicates that an effect reads and writes the same piece of state
+https://svelte.dev/e/effect_update_depth_exceeded

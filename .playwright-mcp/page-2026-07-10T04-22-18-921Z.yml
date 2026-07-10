@@ -1,0 +1,96 @@
+- generic [ref=f5e2]:
+  - generic [ref=f5e3]:
+    - banner [ref=f5e4]:
+      - navigation [ref=f5e5]:
+        - link "Pokédex" [ref=f5e6] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f5e7]:
+          - link "List" [ref=f5e8] [cursor=pointer]:
+            - /url: /
+          - link "Berries" [ref=f5e9] [cursor=pointer]:
+            - /url: /berries
+          - link "Favorites" [ref=f5e10] [cursor=pointer]:
+            - /url: /favorites
+          - button "Toggle theme" [ref=f5e11]
+    - main [ref=f5e14]:
+      - generic [ref=f5e430]:
+        - link "Back to Pokédex" [ref=f5e431] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f5e433]:
+          - generic [ref=f5e434]:
+            - generic [ref=f5e435]:
+              - img "Bulbasaur" [ref=f5e436]
+              - button [ref=f5e437]
+            - generic [ref=f5e439]:
+              - button "Front" [ref=f5e440]
+              - button "Back" [ref=f5e441]
+              - button "Shiny" [ref=f5e442]
+              - button "Play cry" [ref=f5e443]
+            - generic [ref=f5e445]:
+              - heading "Base Stats" [level=3] [ref=f5e446]
+              - generic [ref=f5e448]:
+                - generic [ref=f5e449]: Hp
+                - generic [ref=f5e450]: "45"
+              - generic [ref=f5e454]:
+                - generic [ref=f5e455]: Attack
+                - generic [ref=f5e456]: "49"
+              - generic [ref=f5e460]:
+                - generic [ref=f5e461]: Defense
+                - generic [ref=f5e462]: "49"
+              - generic [ref=f5e466]:
+                - generic [ref=f5e467]: Special-attack
+                - generic [ref=f5e468]: "65"
+              - generic [ref=f5e472]:
+                - generic [ref=f5e473]: Special-defense
+                - generic [ref=f5e474]: "65"
+              - generic [ref=f5e478]:
+                - generic [ref=f5e479]: Speed
+                - generic [ref=f5e480]: "45"
+          - generic [ref=f5e483]:
+            - generic [ref=f5e484]:
+              - paragraph [ref=f5e485]: "#0000"
+              - heading "Bulbasaur" [level=1] [ref=f5e486]
+            - generic [ref=f5e487]:
+              - heading "Types" [level=3] [ref=f5e488]
+              - generic [ref=f5e489]:
+                - generic [ref=f5e490]: Grass
+                - generic [ref=f5e491]: Poison
+            - generic [ref=f5e492]:
+              - generic [ref=f5e493]:
+                - paragraph [ref=f5e494]: Height
+                - paragraph [ref=f5e495]: 0.7 m
+              - generic [ref=f5e496]:
+                - paragraph [ref=f5e497]: Weight
+                - paragraph [ref=f5e498]: 6.9 kg
+            - generic [ref=f5e499]:
+              - heading "Abilities" [level=3] [ref=f5e500]
+              - generic [ref=f5e501]:
+                - generic [ref=f5e502]: overgrow
+                - generic [ref=f5e504]:
+                  - generic [ref=f5e505]: chlorophyll
+                  - generic [ref=f5e506]: Hidden
+            - generic [ref=f5e507]:
+              - heading "Moves" [level=3] [ref=f5e508]
+              - generic [ref=f5e509]:
+                - generic [ref=f5e510]: razor wind
+                - generic [ref=f5e511]: swords dance
+                - generic [ref=f5e512]: cut
+                - generic [ref=f5e513]: bind
+                - generic [ref=f5e514]: vine whip
+                - generic [ref=f5e515]: headbutt
+              - paragraph [ref=f5e516]: +80 more
+            - generic [ref=f5e517]:
+              - heading "Evolution Chain" [level=3] [ref=f5e518]
+              - generic [ref=f5e519]:
+                - link "bulbasaur" [ref=f5e520] [cursor=pointer]:
+                  - /url: /pokemon/bulbasaur
+                - link "ivysaur" [ref=f5e521] [cursor=pointer]:
+                  - /url: /pokemon/ivysaur
+                - link "venusaur" [ref=f5e522] [cursor=pointer]:
+                  - /url: /pokemon/venusaur
+    - contentinfo [ref=f5e33]:
+      - paragraph [ref=f5e34]:
+        - text: Pokédex powered by
+        - link "PokéAPI" [ref=f5e35] [cursor=pointer]:
+          - /url: https://pokeapi.co
+  - generic [ref=f5e429]: untitled page

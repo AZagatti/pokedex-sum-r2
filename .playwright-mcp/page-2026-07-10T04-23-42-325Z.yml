@@ -1,0 +1,73 @@
+- generic [ref=f7e3]:
+  - banner [ref=f7e4]:
+    - navigation [ref=f7e5]:
+      - link "Pokédex" [ref=f7e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f7e7]:
+        - link "List" [ref=f7e8] [cursor=pointer]:
+          - /url: /
+        - link "Berries" [ref=f7e9] [cursor=pointer]:
+          - /url: /berries
+        - link "Favorites" [ref=f7e10] [cursor=pointer]:
+          - /url: /favorites
+        - button "Toggle theme" [ref=f7e11]
+  - main [ref=f7e14]:
+    - generic [ref=f7e15]:
+      - heading "Pokédex" [level=1] [ref=f7e16]
+      - generic [ref=f7e17]:
+        - textbox "Search by name..." [ref=f7e22]
+        - generic [ref=f7e23]:
+          - paragraph [ref=f7e24]: Types
+          - generic [ref=f7e36]:
+            - button "normal" [ref=f7e37]
+            - button "fire" [ref=f7e38]
+            - button "water" [ref=f7e39]
+            - button "electric" [active] [ref=f7e40]
+            - button "grass" [ref=f7e41]
+            - button "ice" [ref=f7e42]
+            - button "fighting" [ref=f7e43]
+            - button "poison" [ref=f7e44]
+            - button "ground" [ref=f7e45]
+            - button "flying" [ref=f7e46]
+            - button "psychic" [ref=f7e47]
+            - button "bug" [ref=f7e48]
+            - button "rock" [ref=f7e49]
+            - button "ghost" [ref=f7e50]
+            - button "dragon" [ref=f7e51]
+            - button "dark" [ref=f7e52]
+            - button "steel" [ref=f7e53]
+            - button "fairy" [ref=f7e54]
+        - generic [ref=f7e25]:
+          - generic [ref=f7e26]:
+            - radio "Sort by Number" [checked] [ref=f7e27]
+            - generic [ref=f7e28]: Sort by Number
+          - generic [ref=f7e29]:
+            - radio "Sort by Base Stats" [ref=f7e30]
+            - generic [ref=f7e31]: Sort by Base Stats
+        - button "Clear Filters" [ref=f7e793]
+      - generic [ref=f7e55]:
+        - 'link "Pikachu Add to favorites #0025 Pikachu Electric" [ref=f7e357] [cursor=pointer]':
+          - /url: /pokemon/pikachu
+          - generic [ref=f7e358]:
+            - img "Pikachu" [ref=f7e359]
+            - button "Add to favorites" [ref=f7e360]
+          - generic [ref=f7e362]:
+            - generic [ref=f7e364]:
+              - paragraph [ref=f7e365]: "#0025"
+              - heading "Pikachu" [level=3] [ref=f7e366]
+            - generic [ref=f7e367]: Electric
+        - 'link "Raichu Add to favorites #0026 Raichu Electric" [ref=f7e733] [cursor=pointer]':
+          - /url: /pokemon/raichu
+          - generic [ref=f7e734]:
+            - img "Raichu" [ref=f7e735]
+            - button "Add to favorites" [ref=f7e736]
+          - generic [ref=f7e738]:
+            - generic [ref=f7e740]:
+              - paragraph [ref=f7e741]: "#0026"
+              - heading "Raichu" [level=3] [ref=f7e742]
+            - generic [ref=f7e743]: Electric
+  - contentinfo [ref=f7e33]:
+    - paragraph [ref=f7e34]:
+      - text: Pokédex powered by
+      - link "PokéAPI" [ref=f7e35] [cursor=pointer]:
+        - /url: https://pokeapi.co
