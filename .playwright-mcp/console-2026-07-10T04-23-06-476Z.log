@@ -1,0 +1,4 @@
+[   94930ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/favicon.ico:0
+[  119383ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:5173/node_modules/@sveltejs/kit/src/runtime/client/entry.js:0
+[  119386ms] Failed to fetch dynamically imported module: http://localhost:5173/node_modules/@sveltejs/kit/src/runtime/client/entry.js
+[  119391ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:5173/@fs/home/azagatti/Projects/pokedex-trimwire-test/sum_r2/.svelte-kit/generated/client/app.js:0

@@ -1,7 +1,8 @@
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-export default {
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
 	preprocess: vitePreprocess(),
 	kit: {
 		adapter: adapter({
@@ -10,6 +11,11 @@ export default {
 		}),
 		paths: {
 			base: '/pokedex-sum-r2'
+		},
+		prerender: {
+			handleUnseenRoutes: 'warn'
 		}
 	}
 };
+
+export default config;
