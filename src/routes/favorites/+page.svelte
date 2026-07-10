@@ -1,31 +1,30 @@
 <script lang="ts">
-	import { favoritesStore } from '$lib/stores/favorites';
-	import { fetchPokemonDetail } from '$lib/api';
-	import PokemonCard from '$lib/components/PokemonCard.svelte';
-	import type { PokemonDetail } from '$lib/api/schemas';
+import { fetchPokemonDetail } from "$lib/api";
+import type { PokemonDetail } from "$lib/api/schemas";
+import { favoritesStore } from "$lib/stores/favorites";
 
-	let favorites: PokemonDetail[] = $state([]);
-	let isLoading = $state(true);
+let favorites: PokemonDetail[] = $state([]);
+let isLoading = $state(true);
 
-	$effect(async () => {
-		isLoading = true;
-		let faves: string[] = [];
-		const unsub = favoritesStore.subscribe((current) => {
-			faves = Array.from(current);
-		});
+$effect(async () => {
+  isLoading = true;
+  let faves: string[] = [];
+  const unsub = favoritesStore.subscribe((current) => {
+    faves = Array.from(current);
+  });
 
-		try {
-			const details = await Promise.all(
-				faves.map((name) => fetchPokemonDetail(name))
-			);
-			favorites = details.filter((d) => d !== null);
-		} catch (error) {
-			console.error('Failed to load favorites:', error);
-		} finally {
-			isLoading = false;
-			unsub();
-		}
-	});
+  try {
+    const details = await Promise.all(
+      faves.map((name) => fetchPokemonDetail(name))
+    );
+    favorites = details.filter((d) => d !== null);
+  } catch (error) {
+    console.error("Failed to load favorites:", error);
+  } finally {
+    isLoading = false;
+    unsub();
+  }
+});
 </script>
 
 <div class="space-y-6">

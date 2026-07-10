@@ -1,29 +1,30 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { fetchBerryList, fetchBerryDetail } from '$lib/api';
-	import { capitalizeFirst } from '$lib/utils';
-	import type { BerryDetail } from '$lib/api/schemas';
+import { onMount } from "svelte";
+import { fetchBerryDetail, fetchBerryList } from "$lib/api";
+import type { BerryDetail } from "$lib/api/schemas";
 
-	let berries: BerryDetail[] = $state([]);
-	let isLoading = $state(true);
+let berries: BerryDetail[] = $state([]);
+let isLoading = $state(true);
 
-	async function loadBerries() {
-		try {
-			const list = await fetchBerryList();
-			if (!list) return;
+async function loadBerries() {
+  try {
+    const list = await fetchBerryList();
+    if (!list) {
+      return;
+    }
 
-			const details = await Promise.all(
-				list.results.slice(0, 30).map((r) => fetchBerryDetail(r.name))
-			);
-			berries = details.filter((d) => d !== null);
-		} catch (error) {
-			console.error('Failed to load berries:', error);
-		} finally {
-			isLoading = false;
-		}
-	}
+    const details = await Promise.all(
+      list.results.slice(0, 30).map((r) => fetchBerryDetail(r.name))
+    );
+    berries = details.filter((d) => d !== null);
+  } catch (error) {
+    console.error("Failed to load berries:", error);
+  } finally {
+    isLoading = false;
+  }
+}
 
-	onMount(() => loadBerries());
+onMount(() => loadBerries());
 </script>
 
 <div class="space-y-6">

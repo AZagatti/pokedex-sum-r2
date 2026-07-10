@@ -1,31 +1,31 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { fetchBerryDetail } from '$lib/api';
-	import { capitalizeFirst } from '$lib/utils';
-	import { ChevronLeft } from '@lucide/svelte';
-	import type { BerryDetail } from '$lib/api/schemas';
+import { page } from "$app/stores";
+import { fetchBerryDetail } from "$lib/api";
+import type { BerryDetail } from "$lib/api/schemas";
 
-	let berry: BerryDetail | null = $state(null);
-	let isLoading = $state(true);
-	let error: string | null = $state(null);
+let berry: BerryDetail | null = $state(null);
+let isLoading = $state(true);
+let error: string | null = $state(null);
 
-	const name = $page.params.name;
+const name = $page.params.name;
 
-	async function loadBerry() {
-		try {
-			const detail = await fetchBerryDetail(name);
-			if (!detail) throw new Error('Berry not found');
-			berry = detail;
-		} catch (err) {
-			error = err instanceof Error ? err.message : 'Failed to load berry';
-		} finally {
-			isLoading = false;
-		}
-	}
+async function loadBerry() {
+  try {
+    const detail = await fetchBerryDetail(name);
+    if (!detail) {
+      throw new Error("Berry not found");
+    }
+    berry = detail;
+  } catch (err) {
+    error = err instanceof Error ? err.message : "Failed to load berry";
+  } finally {
+    isLoading = false;
+  }
+}
 
-	$effect(() => {
-		loadBerry();
-	});
+$effect(() => {
+  loadBerry();
+});
 </script>
 
 <div class="space-y-8 max-w-2xl">

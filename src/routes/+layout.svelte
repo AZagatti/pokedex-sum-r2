@@ -1,26 +1,24 @@
 <script lang="ts">
-	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
-	import { themeStore } from '$lib/stores/theme';
-	import { Moon, Sun } from '@lucide/svelte';
-	import { onMount } from 'svelte';
+import "./layout.css";
+import { onMount } from "svelte";
+import { themeStore } from "$lib/stores/theme";
 
-	let { children } = $props();
-	let isDark = $state(false);
+let { children } = $props();
+let isDark = $state(false);
 
-	onMount(() => {
-		const unsubscribe = themeStore.subscribe((theme) => {
-			isDark = theme === 'dark';
-			if (typeof window !== 'undefined') {
-				document.documentElement.classList.toggle('dark', isDark);
-			}
-		});
-		return unsubscribe;
-	});
+onMount(() => {
+  const unsubscribe = themeStore.subscribe((theme) => {
+    isDark = theme === "dark";
+    if (typeof window !== "undefined") {
+      document.documentElement.classList.toggle("dark", isDark);
+    }
+  });
+  return unsubscribe;
+});
 
-	function toggleTheme() {
-		themeStore.set(isDark ? 'light' : 'dark');
-	}
+function toggleTheme() {
+  themeStore.set(isDark ? "light" : "dark");
+}
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>

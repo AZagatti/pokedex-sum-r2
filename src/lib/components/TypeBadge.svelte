@@ -1,12 +1,10 @@
 <script lang="ts">
-	import { getTypeColor, capitalizeFirst } from '$lib/utils';
+interface Props {
+  class?: string;
+  types: Array<{ type: { name: string } }>;
+}
 
-	interface Props {
-		types: Array<{ type: { name: string } }>;
-		class?: string;
-	}
-
-	let { types, class: className = '' }: Props = $props();
+let { types, class: className = "" }: Props = $props();
 </script>
 
 <div class="flex flex-wrap gap-2 {className}">

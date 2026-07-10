@@ -1,129 +1,144 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { fetchPokemonList, fetchPokemonDetail } from '$lib/api';
-	import PokemonCard from '$lib/components/PokemonCard.svelte';
-	import PokemonCardSkeleton from '$lib/components/PokemonCardSkeleton.svelte';
-	import { Search, X } from '@lucide/svelte';
-	import type { PokemonListResult, PokemonDetail } from '$lib/api/schemas';
+import { onMount } from "svelte";
+import { fetchPokemonDetail, fetchPokemonList } from "$lib/api";
+import type { PokemonDetail } from "$lib/api/schemas";
 
-	let pokemonList: PokemonDetail[] = $state([]);
-	let isLoading = $state(false);
-	let hasMore = $state(true);
-	let offset = $state(0);
-	const LIMIT = 30;
+let pokemonList: PokemonDetail[] = $state([]);
+let isLoading = $state(false);
+let hasMore = $state(true);
+let offset = $state(0);
+const LIMIT = 30;
 
-	let searchQuery = $state('');
-	let selectedTypes = $state<string[]>([]);
-	let selectedGen = $state<number | null>(null);
-	let sortBy = $state<'number' | 'stats'>('number');
+let searchQuery = $state("");
+let selectedTypes = $state<string[]>([]);
+let selectedGen = $state<number | null>(null);
+let sortBy = $state<"number" | "stats">("number");
 
-	let allTypes: string[] = $state([]);
-	let filteredList: PokemonDetail[] = $state([]);
+let allTypes: string[] = $state([]);
+let filteredList: PokemonDetail[] = $state([]);
 
-	let sentinelElement: HTMLDivElement | null = null;
+let sentinelElement: HTMLDivElement | null = null;
 
-	async function loadInitial() {
-		isLoading = true;
-		pokemonList = [];
-		offset = 0;
-		hasMore = true;
-		await loadMore();
-		isLoading = false;
-	}
+async function loadInitial() {
+  isLoading = true;
+  pokemonList = [];
+  offset = 0;
+  hasMore = true;
+  await loadMore();
+  isLoading = false;
+}
 
-	async function loadMore() {
-		if (isLoading || !hasMore) return;
-		isLoading = true;
+async function loadMore() {
+  if (isLoading || !hasMore) {
+    return;
+  }
+  isLoading = true;
 
-		try {
-			const list = await fetchPokemonList(LIMIT, offset);
-			if (!list || list.results.length === 0) {
-				hasMore = false;
-				isLoading = false;
-				return;
-			}
+  try {
+    const list = await fetchPokemonList(LIMIT, offset);
+    if (!list || list.results.length === 0) {
+      hasMore = false;
+      isLoading = false;
+      return;
+    }
 
-			const details = await Promise.all(
-				list.results.map((r) => fetchPokemonDetail(r.name))
-			);
-			pokemonList = [...pokemonList, ...details.filter((d) => d !== null)];
-			offset += LIMIT;
-			hasMore = list.next !== null;
-		} catch (error) {
-			console.error('Failed to load pokémon:', error);
-			hasMore = false;
-		} finally {
-			isLoading = false;
-		}
-	}
+    const details = await Promise.all(
+      list.results.map((r) => fetchPokemonDetail(r.name))
+    );
+    pokemonList = [...pokemonList, ...details.filter((d) => d !== null)];
+    offset += LIMIT;
+    hasMore = list.next !== null;
+  } catch (error) {
+    console.error("Failed to load pokémon:", error);
+    hasMore = false;
+  } finally {
+    isLoading = false;
+  }
+}
 
-	function applyFilters() {
-		let result = [...pokemonList];
+function applyFilters() {
+  let result = [...pokemonList];
 
-		if (searchQuery) {
-			const q = searchQuery.toLowerCase();
-			result = result.filter((p) => p.name.toLowerCase().includes(q));
-		}
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    result = result.filter((p) => p.name.toLowerCase().includes(q));
+  }
 
-		if (selectedTypes.length > 0) {
-			result = result.filter((p) =>
-				selectedTypes.some((t) =>
-					p.types.some((pt) => pt.type.name === t)
-				)
-			);
-		}
+  if (selectedTypes.length > 0) {
+    result = result.filter((p) =>
+      selectedTypes.some((t) => p.types.some((pt) => pt.type.name === t))
+    );
+  }
 
-		if (sortBy === 'stats') {
-			result.sort((a, b) => (b.stats[0]?.base_stat || 0) - (a.stats[0]?.base_stat || 0));
-		}
+  if (sortBy === "stats") {
+    result.sort(
+      (a, b) => (b.stats[0]?.base_stat || 0) - (a.stats[0]?.base_stat || 0)
+    );
+  }
 
-		filteredList = result;
-	}
+  filteredList = result;
+}
 
-	function clearFilters() {
-		searchQuery = '';
-		selectedTypes = [];
-		selectedGen = null;
-		sortBy = 'number';
-		applyFilters();
-	}
+function clearFilters() {
+  searchQuery = "";
+  selectedTypes = [];
+  selectedGen = null;
+  sortBy = "number";
+  applyFilters();
+}
 
-	function toggleType(type: string) {
-		if (selectedTypes.includes(type)) {
-			selectedTypes = selectedTypes.filter((t) => t !== type);
-		} else {
-			selectedTypes = [...selectedTypes, type];
-		}
-		applyFilters();
-	}
+function toggleType(type: string) {
+  if (selectedTypes.includes(type)) {
+    selectedTypes = selectedTypes.filter((t) => t !== type);
+  } else {
+    selectedTypes = [...selectedTypes, type];
+  }
+  applyFilters();
+}
 
-	onMount(() => {
-		allTypes = [
-			'normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison',
-			'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'
-		];
+onMount(() => {
+  allTypes = [
+    "normal",
+    "fire",
+    "water",
+    "electric",
+    "grass",
+    "ice",
+    "fighting",
+    "poison",
+    "ground",
+    "flying",
+    "psychic",
+    "bug",
+    "rock",
+    "ghost",
+    "dragon",
+    "dark",
+    "steel",
+    "fairy",
+  ];
 
-		loadInitial();
+  loadInitial();
 
-		const observer = new IntersectionObserver(
-			(entries) => {
-				if (entries[0].isIntersecting && hasMore && !isLoading) {
-					loadMore();
-				}
-			},
-			{ threshold: 0.1 }
-		);
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].isIntersecting && hasMore && !isLoading) {
+        loadMore();
+      }
+    },
+    { threshold: 0.1 }
+  );
 
-		if (sentinelElement) {
-			observer.observe(sentinelElement);
-		}
+  if (sentinelElement) {
+    observer.observe(sentinelElement);
+  }
 
-		return () => observer.disconnect();
-	});
+  return () => observer.disconnect();
+});
 
-	$effect(() => {
-		applyFilters();
-	});
+$effect(() => {
+  applyFilters();
+});
 </script>
 
 <div class="space-y-6">

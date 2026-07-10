@@ -1,0 +1,15 @@
+{
+  "extends": ["ultracite/biome/core"],
+  "overrides": [
+    {
+      "includes": ["*.svelte"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useSingleVarDeclarator": "off"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,88 +1,97 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { fetchPokemonDetail, fetchPokemonSpecies, fetchEvolutionChain } from '$lib/api';
-	import PokemonImage from '$lib/components/PokemonImage.svelte';
-	import TypeBadge from '$lib/components/TypeBadge.svelte';
-	import { favoritesStore } from '$lib/stores/favorites';
-	import { capitalizeFirst, getPokemonNumber } from '$lib/utils';
-	import { Heart, ChevronLeft, Volume2 } from '@lucide/svelte';
-	import type { PokemonDetail } from '$lib/api/schemas';
+import { page } from "$app/stores";
+import {
+  fetchEvolutionChain,
+  fetchPokemonDetail,
+  fetchPokemonSpecies,
+} from "$lib/api";
+import type { PokemonDetail } from "$lib/api/schemas";
+import { favoritesStore } from "$lib/stores/favorites";
 
-	interface EvolutionNode {
-		species: { name: string; url: string };
-		evolves_to: EvolutionNode[];
-	}
+interface EvolutionNode {
+  evolves_to: EvolutionNode[];
+  species: { name: string; url: string };
+}
 
-	let pokemon: PokemonDetail | null = $state(null);
-	let isLoading = $state(true);
-	let error: string | null = $state(null);
-	let isFavorite = $state(false);
-	let spriteMode = $state<'front' | 'back' | 'shiny'>('front');
-	let evolutionChain: EvolutionNode[] = $state([]);
+let pokemon: PokemonDetail | null = $state(null);
+let isLoading = $state(true);
+let error: string | null = $state(null);
+let isFavorite = $state(false);
+let spriteMode = $state<"front" | "back" | "shiny">("front");
+let evolutionChain: EvolutionNode[] = $state([]);
 
-	const name = $page.params.name;
+const name = $page.params.name;
 
-	async function loadPokemon() {
-		try {
-			const detail = await fetchPokemonDetail(name);
-			if (!detail) throw new Error('Pokémon not found');
+async function loadPokemon() {
+  try {
+    const detail = await fetchPokemonDetail(name);
+    if (!detail) {
+      throw new Error("Pokémon not found");
+    }
 
-			pokemon = detail;
-			isFavorite = favoritesStore.isFavorite(name);
+    pokemon = detail;
+    isFavorite = favoritesStore.isFavorite(name);
 
-			if (pokemon.species?.url) {
-				const species = await fetchPokemonSpecies(pokemon.species.url.split('/').slice(-2)[0]);
-				if (species?.evolution_chain) {
-					const chainUrl = species.evolution_chain.url;
-					const chainId = chainUrl.split('/').slice(-2)[0];
-					const chain = await fetchEvolutionChain(chainId);
-					if (chain) {
-						evolutionChain = chain.chain.evolves_to ? [chain.chain] : [];
-					}
-				}
-			}
-		} catch (err) {
-			error = err instanceof Error ? err.message : 'Failed to load Pokémon';
-		} finally {
-			isLoading = false;
-		}
-	}
+    if (pokemon.species?.url) {
+      const species = await fetchPokemonSpecies(
+        pokemon.species.url.split("/").slice(-2)[0]
+      );
+      if (species?.evolution_chain) {
+        const chainUrl = species.evolution_chain.url;
+        const chainId = chainUrl.split("/").slice(-2)[0];
+        const chain = await fetchEvolutionChain(chainId);
+        if (chain) {
+          evolutionChain = chain.chain.evolves_to ? [chain.chain] : [];
+        }
+      }
+    }
+  } catch (err) {
+    error = err instanceof Error ? err.message : "Failed to load Pokémon";
+  } finally {
+    isLoading = false;
+  }
+}
 
-	function toggleFavorite() {
-		favoritesStore.toggle(name);
-		isFavorite = favoritesStore.isFavorite(name);
-	}
+function toggleFavorite() {
+  favoritesStore.toggle(name);
+  isFavorite = favoritesStore.isFavorite(name);
+}
 
-	function getSprite(): string | null {
-		if (!pokemon) return null;
-		switch (spriteMode) {
-			case 'back':
-				return pokemon.sprites.back_default;
-			case 'shiny':
-				return pokemon.sprites.front_shiny || pokemon.sprites.front_default;
-			default:
-				return pokemon.sprites.other?.['official-artwork']?.front_default || pokemon.sprites.front_default;
-		}
-	}
+function getSprite(): string | null {
+  if (!pokemon) {
+    return null;
+  }
+  switch (spriteMode) {
+    case "back":
+      return pokemon.sprites.back_default;
+    case "shiny":
+      return pokemon.sprites.front_shiny || pokemon.sprites.front_default;
+    default:
+      return (
+        pokemon.sprites.other?.["official-artwork"]?.front_default ||
+        pokemon.sprites.front_default
+      );
+  }
+}
 
-	function playCry() {
-		if (pokemon?.cries?.latest) {
-			const audio = new Audio(pokemon.cries.latest);
-			audio.play().catch(() => console.log('Audio play failed'));
-		}
-	}
+function playCry() {
+  if (pokemon?.cries?.latest) {
+    const audio = new Audio(pokemon.cries.latest);
+    audio.play().catch(() => console.log("Audio play failed"));
+  }
+}
 
-	$effect(() => {
-		loadPokemon();
-	});
+$effect(() => {
+  loadPokemon();
+});
 
-	function flattenEvolutions(node: EvolutionNode): string[] {
-		let result = [node.species.name];
-		for (const child of node.evolves_to) {
-			result = result.concat(flattenEvolutions(child));
-		}
-		return result;
-	}
+function flattenEvolutions(node: EvolutionNode): string[] {
+  let result = [node.species.name];
+  for (const child of node.evolves_to) {
+    result = result.concat(flattenEvolutions(child));
+  }
+  return result;
+}
 </script>
 
 <div class="space-y-8">

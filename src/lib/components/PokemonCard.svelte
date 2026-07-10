@@ -1,27 +1,23 @@
 <script lang="ts">
-	import PokemonImage from './PokemonImage.svelte';
-	import TypeBadge from './TypeBadge.svelte';
-	import { Heart } from '@lucide/svelte';
-	import { favoritesStore } from '$lib/stores/favorites';
-	import { capitalizeFirst } from '$lib/utils';
+import { favoritesStore } from "$lib/stores/favorites";
 
-	interface Props {
-		name: string;
-		sprite: string | null;
-		types: Array<{ type: { name: string } }>;
-		url?: string;
-		id?: number;
-	}
+interface Props {
+  id?: number;
+  name: string;
+  sprite: string | null;
+  types: Array<{ type: { name: string } }>;
+  url?: string;
+}
 
-	let { name, sprite, types, url = '', id }: Props = $props();
-	let isFavorite = $state(favoritesStore.isFavorite(name));
+let { name, sprite, types, url = "", id }: Props = $props();
+let isFavorite = $state(favoritesStore.isFavorite(name));
 
-	const pokemonNumber = id ? String(id).padStart(4, '0') : '#0000';
+const pokemonNumber = id ? String(id).padStart(4, "0") : "#0000";
 
-	function handleFavorite() {
-		favoritesStore.toggle(name);
-		isFavorite = favoritesStore.isFavorite(name);
-	}
+function handleFavorite() {
+  favoritesStore.toggle(name);
+  isFavorite = favoritesStore.isFavorite(name);
+}
 </script>
 
 <a

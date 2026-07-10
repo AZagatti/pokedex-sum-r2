@@ -1,9 +1,9 @@
 <script lang="ts">
-	export interface Props {
-		class?: string;
-	}
+export interface Props {
+  class?: string;
+}
 
-	let { class: className = '' }: Props = $props();
+let { class: className = "" }: Props = $props();
 </script>
 
 <div class="skeleton rounded-lg overflow-hidden {className}">

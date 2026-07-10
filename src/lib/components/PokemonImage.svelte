@@ -1,11 +1,11 @@
 <script lang="ts">
-	interface Props {
-		src: string | null;
-		alt: string;
-		class?: string;
-	}
+interface Props {
+  alt: string;
+  class?: string;
+  src: string | null;
+}
 
-	let { src, alt, class: className = '' }: Props = $props();
+let { src, alt, class: className = "" }: Props = $props();
 </script>
 
 <img
